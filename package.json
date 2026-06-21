@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "playwright test",
-    "test-unit": "mocha",
+    "test": "mocha \"test/unit/**/*.test.js\"",
+    "test-unit": "yarn test",
     "test-e2e": "playwright test --reporter=html"
   },
   "keywords": [],
