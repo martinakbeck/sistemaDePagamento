@@ -1,26 +1,24 @@
 export default class ServicoDePagamento {
-    #pagamentos
+    #pagamentos;
 
     constructor() {
-        this.#pagamentos = []
+        this.#pagamentos = [];
     }
 
     pagar(codigoBarras, empresa, valor) {
-        this.#pagamentos.push ({
+        this.#pagamentos.push({
             codigoBarras,
             empresa,
             valor,
             categoria: valor > 100 ? 'cara' : 'padrão'
         });
-
-        
     }
 
     consultarUltimoPagamento() {
         if (this.#pagamentos.length === 0) {
-            return null
+            return null;
         }
 
-        return this.#pagamentos[this.#pagamentos.length - 1]
+        return this.#pagamentos[this.#pagamentos.length - 1];
     }
 }
