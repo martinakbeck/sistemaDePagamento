@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "mocha \"test/unit/**/*.test.js\"",
-    "test-unit": "yarn test",
+    "test": "playwright test --reporter=html",
     "test-e2e": "playwright test --reporter=html"
   },
   "keywords": [],
@@ -14,7 +13,6 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "mocha": "^11.7.6"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
