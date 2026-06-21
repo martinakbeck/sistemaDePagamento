@@ -68,9 +68,12 @@ jobs:
         run: yarn run test-e2e
 
       - name: Gerando relatório de testes
-        run: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
+        if: ${always()}
         with:
           name: Relatório de Testes E2E
+          path: ./playwright-report
+
     
   deploy:
     runs-on: ubuntu-latest 
