@@ -27,8 +27,8 @@ jobs:
       - name: Instalando os Browsers do Playwright
         run: npx playwright install
 
-      - name: Executando os testes
-        run: yarn run test
+      - name: Executando os testes E2E
+        run: yarn run test-e2e
 
       
 

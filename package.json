@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "mocha",
+    "test": "playwright test",
     "test-unit": "mocha",
-    "test-e2e": "npx playwright test"
+    "test-e2e": "playwright test --reporter=html"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
     "mocha": "^11.7.6"
   },
   "devDependencies": {
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "@playwright/test": "^1.50.0"
   }
 }

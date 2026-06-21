@@ -1,48 +1,48 @@
+import { test, expect } from '@playwright/test';
 import ServicoDePagamento from '../src/ServicoDePagamento.js';
-import assert from 'assert';
 
-describe('Classe de Servico Pagamento', () => {
+test.describe('Classe de Servico Pagamento', () => {
 
-    it('deve registrar pagamento com categoria "cara" quando valor for maior que 100', () => {
+    test('deve registrar pagamento com categoria "cara" quando valor for maior que 100', () => {
         const servico = new ServicoDePagamento();
 
         servico.pagar('098776563475', 'Samar', 156.87);
 
         const ultimoPagamento = servico.consultarUltimoPagamento();
 
-        assert.equal(ultimoPagamento.codigoBarras, '098776563475');
-        assert.equal(ultimoPagamento.empresa, 'Samar');
-        assert.equal(ultimoPagamento.valor, 156.87);
-        assert.equal(ultimoPagamento.categoria, 'cara');
+        expect(ultimoPagamento.codigoBarras).toBe('098776563475');
+        expect(ultimoPagamento.empresa).toBe('Samar');
+        expect(ultimoPagamento.valor).toBe(156.87);
+        expect(ultimoPagamento.categoria).toBe('cara');
     });
 
-    it('deve registrar pagamento com categoria "padrão" quando valor for igual a 100', () => {
+    test('deve registrar pagamento com categoria "padrão" quando valor for igual a 100', () => {
         const servico = new ServicoDePagamento();
 
         servico.pagar('123456789012', 'Energia', 100);
 
         const ultimoPagamento = servico.consultarUltimoPagamento();
 
-        assert.equal(ultimoPagamento.codigoBarras, '123456789012');
-        assert.equal(ultimoPagamento.empresa, 'Energia');
-        assert.equal(ultimoPagamento.valor, 100);
-        assert.equal(ultimoPagamento.categoria, 'padrão');
+        expect(ultimoPagamento.codigoBarras).toBe('123456789012');
+        expect(ultimoPagamento.empresa).toBe('Energia');
+        expect(ultimoPagamento.valor).toBe(100);
+        expect(ultimoPagamento.categoria).toBe('padrão');
     });
 
-        it('deve registrar pagamento com categoria "padrão" quando valor for menor que 100', () => {
+    test('deve registrar pagamento com categoria "padrão" quando valor for menor que 100', () => {
         const servico = new ServicoDePagamento();
 
         servico.pagar('123456789012', 'Energia', 99.99);
 
         const ultimoPagamento = servico.consultarUltimoPagamento();
 
-        assert.equal(ultimoPagamento.codigoBarras, '123456789012');
-        assert.equal(ultimoPagamento.empresa, 'Energia');
-        assert.equal(ultimoPagamento.valor, 99.99);
-        assert.equal(ultimoPagamento.categoria, 'padrão');
+        expect(ultimoPagamento.codigoBarras).toBe('123456789012');
+        expect(ultimoPagamento.empresa).toBe('Energia');
+        expect(ultimoPagamento.valor).toBe(99.99);
+        expect(ultimoPagamento.categoria).toBe('padrão');
     });
 
-    it('deve retornar apenas o último pagamento realizado', () => {
+    test('deve retornar apenas o último pagamento realizado', () => {
         const servico = new ServicoDePagamento();
 
         servico.pagar('111', 'Empresa A', 50);
@@ -50,19 +50,16 @@ describe('Classe de Servico Pagamento', () => {
 
         const ultimoPagamento = servico.consultarUltimoPagamento();
 
-        assert.equal(ultimoPagamento.codigoBarras, '222');
-        assert.equal(ultimoPagamento.empresa, 'Empresa B');
-        assert.equal(ultimoPagamento.valor, 200);
-        assert.equal(ultimoPagamento.categoria, 'cara');
+        expect(ultimoPagamento.codigoBarras).toBe('222');
+        expect(ultimoPagamento.empresa).toBe('Empresa B');
+        expect(ultimoPagamento.valor).toBe(200);
+        expect(ultimoPagamento.categoria).toBe('cara');
     });
 
-    it('deve retornar null quando não houver pagamentos', () => {
+    test('deve retornar null quando não houver pagamentos', () => {
         const servico = new ServicoDePagamento();
 
-        assert.equal(
-            servico.consultarUltimoPagamento(),
-            null
-        );
+        expect(servico.consultarUltimoPagamento()).toBe(null);
     });
 
 });
